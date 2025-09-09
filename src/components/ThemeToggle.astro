@@ -1,0 +1,107 @@
+---
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
+  aria-label="Toggle theme"
+>
+  <!-- Light Mode Icon -->
+  <svg class="w-5 h-5 theme-icon-light" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+  </svg>
+  
+  <!-- Dark Mode Icon -->
+  <svg class="w-5 h-5 theme-icon-dark" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+  </svg>
+  
+  <!-- System Mode Icon -->
+  <svg class="w-5 h-5 theme-icon-system" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+  </svg>
+  
+  <!-- Tooltip -->
+  <span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-gray-900 dark:bg-gray-700 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+    <span id="theme-label">System</span>
+  </span>
+</button>
+
+<style>
+  .theme-icon-light,
+  .theme-icon-dark,
+  .theme-icon-system {
+    display: none;
+  }
+  
+  :global([data-theme="light"]) .theme-icon-light {
+    display: block;
+  }
+  
+  :global([data-theme="dark"]) .theme-icon-dark {
+    display: block;
+  }
+  
+  :global([data-theme="system"]) .theme-icon-system {
+    display: block;
+  }
+  
+  /* Default to system icon if no data-theme attribute */
+  :global(html:not([data-theme])) .theme-icon-system {
+    display: block;
+  }
+</style>
+
+<script>
+  const getStoredTheme = () => {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('theme') || 'system';
+    }
+    return 'system';
+  };
+
+  const applyTheme = (theme: string) => {
+    let isDark = false;
+    
+    if (theme === 'system') {
+      isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } else {
+      isDark = theme === 'dark';
+    }
+    
+    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Update label
+    const label = document.getElementById('theme-label');
+    if (label) {
+      label.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+    }
+  };
+
+  // Initialize theme
+  const currentTheme = getStoredTheme();
+  applyTheme(currentTheme);
+
+  // Handle click to cycle through themes
+  const handleToggleClick = () => {
+    const themes = ['light', 'dark', 'system'];
+    const current = getStoredTheme();
+    const currentIndex = themes.indexOf(current);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    const nextTheme = themes[nextIndex];
+    
+    localStorage.setItem('theme', nextTheme);
+    applyTheme(nextTheme);
+  };
+
+  document.getElementById('theme-toggle')?.addEventListener('click', handleToggleClick);
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (getStoredTheme() === 'system') {
+      document.documentElement.classList[e.matches ? 'add' : 'remove']('dark');
+    }
+  });
+</script>

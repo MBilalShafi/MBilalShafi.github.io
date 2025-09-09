@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Bilal Shafi - Portfolio">
+  <div class="flex min-h-screen flex-col">
+    <Header />
+    
+    <main class="flex-1">
+      <div class="container mx-auto px-4 py-16 md:py-24">
+        <div class="mx-auto max-w-3xl">
+          <!-- Hero Section -->
+          <section class="mb-16">
+            <!-- Name and Picture Flex Layout -->
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-8">
+              <!-- Text Content -->
+              <div class="flex-1 text-center md:text-left">
+                <h1 class="mb-4 text-4xl font-bold md:text-5xl">
+                  Hey There, I'm Bilal 👋
+                </h1>
+                <p class="mb-4 text-lg text-black dark:text-gray-400">
+                  Senior Software Engineer & Dad of Two Little Ones 👧👶
+                </p>
+                <SocialLinks />
+              </div>
+              
+              <!-- Profile Picture -->
+              <div class="flex-shrink-0">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Bilal Shafi" 
+                  class="w-32 h-32 md:w-40 md:h-40 object-cover shadow-2xl rounded-2xl"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- About Section -->
+          <section class="max-w-3xl mx-auto">
+            <div class="space-y-5 text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              <p>
+                I'm a senior software engineer with almost a decade of experience building scalable applications that people actually use. My current adventure is unfolding at <a href="https://mui.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">MUI</a> 🎨, where I'm on a mission to craft delightful user experiences and turn developer pain points into "aha!" moments. There's something magical about transforming frustrating workflows into interactions that actually spark joy! ✨
+              </p>
+
+              <p>
+                My expertise spans the full stack, with a particular love for building intuitive interfaces using <a href="https://react.dev" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">React</a> ⚛️ (yes, I survived the class component era 😅). I work primarily with <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">TypeScript</a> 🔷, <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">Node.js</a> 🟢, and <a href="https://python.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 transition-colors">Python</a> 🐍, along with various cloud platforms for deployment and scaling.
+              </p>
+
+              <p>
+                <span class="font-semibold text-indigo-600 dark:text-indigo-400">AI and LLMs</span> 🤖 have become my new best friends at work - always by my side, constantly fascinating me with their capabilities. While the FOMO is real in this AI gold rush, I'm navigating my way through by learning from the collective experiences of the community and discovering how to be genuinely productive rather than just riding the hype wave! 🌊
+              </p>
+
+              <p>
+                Beyond coding, I'm passionate about system design challenges 🏗️ and finding elegant solutions to complex technical problems. I also have a soft spot for hardware tinkering - you'll often find me experimenting with <a href="https://www.raspberrypi.org" target="_blank" rel="noopener noreferrer" class="font-semibold text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">Raspberry Pis</a> 🥧, <a href="https://www.arduino.cc" target="_blank" rel="noopener noreferrer" class="font-semibold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors">Arduino projects</a> 🤖, or diving into random DIY projects that seemed brilliant at 2 AM 🌙.
+              </p>
+
+              <p>
+                Most importantly, I cherish spending quality time with my <span class="font-semibold text-pink-600 dark:text-pink-400">family</span> 👨‍👧‍👦. Being a dad has taught me patience, creativity, and the art of explaining complex concepts in simple terms. I'm also deeply committed to <span class="font-semibold text-purple-600 dark:text-purple-400">giving back to the community</span> through mentoring new developers 👨‍🏫, contributing to open-source projects 🔓, and supporting local tech initiatives 🚀.
+              </p>
+
+              <p class="text-lg font-medium">
+                Feel free to jump over for a quick coffee chat ☕ about the latest tech trends or discussing a cool project you're working on! 😊
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>

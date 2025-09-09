@@ -1,0 +1,56 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Portfolio website of Bilal Shafi' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline>
+      const getThemePreference = () => {
+        if (typeof localStorage !== 'undefined') {
+          const stored = localStorage.getItem('theme');
+          if (stored) return stored;
+        }
+        return 'system';
+      };
+
+      const applyTheme = (theme) => {
+        let isDark = false;
+        
+        if (theme === 'system') {
+          isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        } else {
+          isDark = theme === 'dark';
+        }
+        
+        document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      };
+
+      // Apply theme on load
+      const theme = getThemePreference();
+      applyTheme(theme);
+
+      // Listen for system theme changes when in system mode
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (getThemePreference() === 'system') {
+          document.documentElement.classList[e.matches ? 'add' : 'remove']('dark');
+        }
+      });
+    </script>
+  </head>
+  <body class="min-h-screen antialiased">
+    <slot />
+  </body>
+</html>
