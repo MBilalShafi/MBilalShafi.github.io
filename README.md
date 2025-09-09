@@ -1,6 +1,6 @@
 # 🚀 Bilal's Portfolio Website
 
-Welcome to my little corner of the internet! This is where I pretend to be a serious software engineer while secretly being excited about making LEDs blink. 
+Welcome to my little corner of the internet! This is where I pretend to be a serious software engineer while secretly being excited about making LEDs blink.
 
 ## 🎯 What's This About?
 
@@ -23,17 +23,20 @@ This portfolio website is built with Astro because... well, it's fast, it's cool
 ## 🏠 Running This Thing Locally
 
 1. **Clone it** (you know the drill):
+
    ```bash
-   git clone https://github.com/bilalshafidev/bilalshafidev.github.io
-   cd bilalshafidev.github.io
+   git clone https://github.com/MBilalShafi/MBilalShafi.github.io
+   cd MBilalShafi.github.io
    ```
 
 2. **Install the dependencies** (warning: may take longer than expected):
+
    ```bash
    pnpm install
    ```
 
 3. **Fire it up**:
+
    ```bash
    pnpm run dev
    ```
@@ -57,6 +60,7 @@ The portfolio is live at **[bilalshafi.dev](https://bilalshafi.dev)** - because 
 This site is deployed automatically via GitHub Actions, which means I can push broken code and have it live in under 5 minutes. Modern problems require modern solutions!
 
 The build process:
+
 1. GitHub Actions wakes up
 2. Runs `pnpm install` (probably fails once for good measure)
 3. Builds the site with `pnpm run build`
@@ -66,6 +70,7 @@ The build process:
 ## 🤓 For the Curious Developers
 
 ### Project Structure
+
 ```
 ├── public/           # Static files (including that perfectly cropped profile pic)
 ├── src/
@@ -78,6 +83,7 @@ The build process:
 ```
 
 ### Available Scripts
+
 - `pnpm run dev` - Start the development server (and immediately break something)
 - `pnpm run build` - Build for production (cross your fingers)
 - `pnpm run preview` - Preview the production build locally
@@ -108,4 +114,4 @@ MIT License - aka "do whatever you want with this code, just don't blame me when
 
 Built with ❤️, ☕, and a healthy dose of impostor syndrome.
 
-*P.S. If you found a bug, it's not a bug, it's a feature. If you found a typo... well, that's just embarrassing.*
+_P.S. If you found a bug, it's not a bug, it's a feature. If you found a typo... well, that's just embarrassing._
